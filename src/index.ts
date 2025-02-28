@@ -2,12 +2,10 @@ import { Hono } from 'hono'
 
 const app = new Hono()
 
-// Optional: Handle root path for HTTP requests
 app.get('/', (c) => {
-  return c.text('Welcome to WebSocket Chat Backend! Connect via ws://localhost:8787/ws for local testing.')
+  return c.text('Welcome to WebSocket Chat Backend! Connect via wss://websockets-chat-backend.gmparstone99.workers.dev/ws')
 })
 
-// WebSocket endpoint
 app.get('/ws', (c) => {
   const upgradeHeader = c.req.header('Upgrade')
   if (upgradeHeader !== 'websocket') {
@@ -19,8 +17,7 @@ app.get('/ws', (c) => {
   server.accept()
 
   server.addEventListener('message', (event) => {
-    console.log(`Received: ${event.data}`)
-    server.send(`Echo: ${event.data}`)
+    console.log(`Received Message: ${event.data}`)
   })
 
   server.addEventListener('close', () => {
@@ -33,6 +30,4 @@ app.get('/ws', (c) => {
   })
 })
 
-export default app 
-
-
+export default app
