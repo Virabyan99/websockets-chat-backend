@@ -1,3 +1,13 @@
 name = "websockets-chat-backend"
 main = "src/index.ts"
 compatibility_date = "2025-02-28"
+
+
+[durable_objects]
+bindings = [
+  { name = "CHAT_ROOM", class_name = "ChatRoom" }
+]
+
+[[migrations]]
+tag = "v1"
+new_classes = ["ChatRoom"]
