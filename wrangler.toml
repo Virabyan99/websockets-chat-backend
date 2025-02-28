@@ -11,3 +11,7 @@ bindings = [
 [[migrations]]
 tag = "v1"
 new_classes = ["ChatRoom"]
+
+[[kv_namespaces]]
+binding = "CHAT_MESSAGES"
+id = "b9f4c6b002764cc6beb6ef7a03e695e3"
